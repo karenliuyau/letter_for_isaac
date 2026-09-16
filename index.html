@@ -8,6 +8,11 @@
   <title>泥嚎小宝 ♡</title>
 
   <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
@@ -21,174 +26,625 @@
       font-family:
         "Songti SC",
         "STSong",
+        "SimSun",
         serif;
 
       color: #4b3a35;
       text-align: center;
+
+      overflow-x: hidden;
     }
 
+
+    /* --------------------
+       信纸
+    -------------------- */
+
     .letter {
+      position: relative;
+
       width: 85%;
-      max-width: 420px;
+      max-width: 500px;
+
+      margin: 40px auto;
 
       background: #fffdf9;
 
-      padding: 55px 30px;
+      padding: 55px 35px;
 
       border-radius: 18px;
 
       box-shadow:
         0 10px 35px rgba(80, 50, 40, 0.12);
+
+      z-index: 2;
     }
 
+
     .heart {
-      font-size: 25px;
+      font-size: 26px;
       margin-bottom: 25px;
     }
 
+
     h1 {
-      font-size: 32px;
+      font-size: 30px;
       font-weight: normal;
 
-      letter-spacing: 6px;
+      letter-spacing: 5px;
+      line-height: 1.6;
 
-      margin-bottom: 35px;
+      margin-bottom: 30px;
     }
+
 
     .to {
       font-size: 18px;
       margin-bottom: 35px;
     }
 
+
     .message {
       font-size: 16px;
       line-height: 2;
 
-      margin-bottom: 40px;
+      margin-bottom: 35px;
     }
+
+
+    /* --------------------
+       按钮
+    -------------------- */
 
     button {
       border: none;
 
-      background: #e8b7b1;
+      background: #e8aaa9;
       color: white;
 
-      padding: 14px 30px;
+      padding: 15px 32px;
 
       border-radius: 30px;
 
+      font-family: inherit;
       font-size: 16px;
 
       cursor: pointer;
+
+      box-shadow:
+        0 5px 15px rgba(220, 150, 150, 0.25);
+
+      transition: 0.3s;
     }
+
 
     button:hover {
-      opacity: 0.85;
+      transform: translateY(-2px);
+      opacity: 0.9;
     }
 
+
+    /* --------------------
+       第二页
+    -------------------- */
+
     #voice-letter {
-  display: none;
-  animation: fadeIn 1.2s ease;
-}
+      display: none;
 
-#voice-letter h2 {
-  font-size: 24px;
-  font-weight: normal;
-  letter-spacing: 4px;
-  margin-top: 20px;
-  margin-bottom: 30px;
-}
+      animation: fadeIn 1.2s ease;
+    }
 
-#voice-letter p {
-  font-size: 16px;
-  line-height: 2;
-}
 
-.small-heart {
-  font-size: 22px;
-  margin-top: 10px;
-}
+    #voice-letter h2 {
+      font-size: 27px;
+      font-weight: normal;
 
-.headphones {
-  font-size: 30px;
-  margin-top: 25px;
-}
+      letter-spacing: 5px;
 
-.little-note {
-  font-size: 13px !important;
-  opacity: 0.6;
-}
+      margin-top: 5px;
+      margin-bottom: 30px;
+    }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-    
+    @keyframes fadeIn {
+
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+
+    /* --------------------
+       照片
+    -------------------- */
+
+    .photo-area {
+      position: relative;
+
+      width: 85%;
+      max-width: 310px;
+
+      margin: 0 auto 35px;
+    }
+
+
+    .polaroid {
+      position: relative;
+
+      background: white;
+
+      padding:
+        12px
+        12px
+        35px;
+
+      box-shadow:
+        0 8px 20px rgba(70, 40, 40, 0.16);
+
+      transform: rotate(1.5deg);
+
+      z-index: 2;
+    }
+
+
+    .polaroid img {
+      display: block;
+
+      width: 100%;
+      height: auto;
+
+      border-radius: 2px;
+    }
+
+
+    /* 照片上面的胶带 */
+
+    .tape {
+      position: absolute;
+
+      width: 75px;
+      height: 24px;
+
+      top: -12px;
+      left: 50%;
+
+      transform:
+        translateX(-50%)
+        rotate(-2deg);
+
+      background:
+        rgba(239, 174, 180, 0.65);
+
+      z-index: 5;
+    }
+
+
+    /* --------------------
+       第二页文字
+    -------------------- */
+
+    .gift-message {
+      font-size: 17px;
+
+      line-height: 2;
+
+      margin:
+        20px auto
+        30px;
+
+      letter-spacing: 1px;
+    }
+
+
+    /* --------------------
+       录音
+    -------------------- */
+
+    .audio-title {
+      margin-top: 25px;
+
+      font-size: 15px;
+
+      opacity: 0.75;
+    }
+
+
+    audio {
+      width: 100%;
+
+      margin-top: 12px;
+
+      accent-color: #e8aaa9;
+    }
+
+
+    .love-you {
+      margin-top: 35px;
+
+      font-size: 19px;
+
+      letter-spacing: 2px;
+    }
+
+
+    /* --------------------
+       飘动爱心
+    -------------------- */
+
+    .floating-heart {
+      position: fixed;
+
+      bottom: -50px;
+
+      color: #f2a6b3;
+
+      pointer-events: none;
+
+      z-index: 1;
+
+      animation:
+        floatUp linear forwards;
+    }
+
+
+    @keyframes floatUp {
+
+      0% {
+        transform:
+          translateY(0)
+          rotate(0deg);
+
+        opacity: 0;
+      }
+
+
+      15% {
+        opacity: 0.8;
+      }
+
+
+      80% {
+        opacity: 0.6;
+      }
+
+
+      100% {
+        transform:
+          translateY(-110vh)
+          rotate(25deg);
+
+        opacity: 0;
+      }
+
+    }
+
+
+    /* --------------------
+       手机
+    -------------------- */
+
+    @media (max-width: 600px) {
+
+      body {
+        align-items: flex-start;
+      }
+
+
+      .letter {
+        width: 90%;
+
+        margin:
+          30px auto;
+
+        padding:
+          45px 22px;
+      }
+
+
+      h1 {
+        font-size: 25px;
+
+        letter-spacing: 3px;
+      }
+
+
+      .message {
+        font-size: 15px;
+      }
+
+
+      .gift-message {
+        font-size: 16px;
+      }
+
+
+      .photo-area {
+        width: 90%;
+      }
+
+    }
+
   </style>
+
 </head>
+
 
 
 <body>
 
+
   <div class="letter">
 
-    <div class="heart">♡</div>
 
-    <h1>宝宝今天过得好吗？睡得好吗？想我了吗？</h1>
+    <!-- 第一页 -->
 
-    <div class="to">
-      To：我的小宝
+    <div id="first-page">
+
+      <div class="heart">
+        ♡
+      </div>
+
+
+      <h1>
+        宝宝今天过得好吗？<br>
+        睡得好吗？想我了吗？
+      </h1>
+
+
+      <div class="to">
+        To：我的小宝
+      </div>
+
+
+      <div class="message">
+
+        我拖了很久才写这封信，<br>
+
+        因为有太多复杂的情绪，<br>
+
+        不知道怎么说出来，<br>
+
+        写信可以把我很多腼腆而说不出口的想法表达出来，<br>
+
+        好啦！接下来才是我真正想告诉你的话。
+
+      </div>
+
+
+      <button onclick="openLetter()">
+
+        💌 点开继续
+
+      </button>
+
     </div>
 
-    <div class="message">
 
-      我拖了很久才写这封信，<br>
-      
-      因为有太多复杂的情绪，<br>
-      
-      不知道怎么说出来，<br>
-      
-      写信可以把我很多腼腆而说不出口的思想表达出来，<br>
-      
-      好啦！接下来才是我真正想告诉你的话。
+
+    <!-- 第二页 -->
+
+    <div id="voice-letter">
+
+
+      <div class="heart">
+        ♡
+      </div>
+
+
+      <h2>
+        给小宝 ♡
+      </h2>
+
+
+
+      <!-- 你们的照片 -->
+
+      <div class="photo-area">
+
+
+        <div class="polaroid">
+
+          <div class="tape"></div>
+
+
+          <img
+            src="us.JPG"
+            alt="我们的照片"
+          >
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- 文字 -->
+
+      <div class="gift-message">
+
+        希望你喜欢这一次的礼物 ♡<br>
+
+        等你看完了，<br>
+
+        就快快打给我！
+
+      </div>
+
+
+
+      <!-- 录音 -->
+
+      <audio controls>
+
+        <source
+          src="letter.m4a"
+          type="audio/mp4"
+        >
+
+        你的浏览器不支持录音播放。
+
+      </audio>
+
+
+      <div class="audio-title">
+
+        🎧 请播放听我声音 ♪
+
+      </div>
+
+
+
+      <div class="love-you">
+
+        最爱你了 👩🏻‍❤️‍💋‍👨🏻
+
+      </div>
+
 
     </div>
 
-    <button id="open-button" onclick="openLetter()">
-  💌 点开听声音
-</button>
 
-<div id="voice-letter">
+  </div>
 
-  <div class="small-heart">♡</div>
 
-  <h2>给小宝</h2>
 
-  </p>
+  <script>
 
-</div>
-  
-<script>
 
-function openLetter() {
+    /* --------------------
+       打开信
+    -------------------- */
 
-  document.querySelector(".message").style.display = "none";
+    function openLetter() {
 
-  document.getElementById("open-button").style.display = "none";
+      document.getElementById("first-page")
+        .style.display = "none";
 
-  document.getElementById("voice-letter").style.display = "block";
 
-}
+      document.getElementById("voice-letter")
+        .style.display = "block";
 
-</script>
-  
+
+      startHearts();
+
+    }
+
+
+
+    /* --------------------
+       生成爱心
+    -------------------- */
+
+    let heartTimer;
+
+
+    function startHearts() {
+
+      if (heartTimer) {
+        return;
+      }
+
+
+      createHeart();
+
+
+      heartTimer = setInterval(
+        createHeart,
+        650
+      );
+
+    }
+
+
+
+    function createHeart() {
+
+      const heart =
+        document.createElement("div");
+
+
+      heart.className =
+        "floating-heart";
+
+
+      /* 随机实心 / 空心 */
+
+      const hearts = [
+        "♡",
+        "♥"
+      ];
+
+
+      heart.innerHTML =
+        hearts[
+          Math.floor(
+            Math.random()
+            * hearts.length
+          )
+        ];
+
+
+      /* 随机位置 */
+
+      heart.style.left =
+        Math.random()
+        * 100
+        + "vw";
+
+
+      /* 随机大小 */
+
+      heart.style.fontSize =
+        (
+          15
+          + Math.random()
+          * 22
+        )
+        + "px";
+
+
+      /* 随机速度 */
+
+      heart.style.animationDuration =
+        (
+          5
+          + Math.random()
+          * 4
+        )
+        + "s";
+
+
+      document.body
+        .appendChild(heart);
+
+
+
+      /* 动画结束以后删除 */
+
+      setTimeout(
+        function () {
+
+          heart.remove();
+
+        },
+
+        9000
+      );
+
+    }
+
+
+  </script>
+
+
 </body>
 
 </html>
