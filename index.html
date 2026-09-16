@@ -86,6 +86,51 @@
       opacity: 0.85;
     }
 
+    #voice-letter {
+  display: none;
+  animation: fadeIn 1.2s ease;
+}
+
+#voice-letter h2 {
+  font-size: 24px;
+  font-weight: normal;
+  letter-spacing: 4px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+#voice-letter p {
+  font-size: 16px;
+  line-height: 2;
+}
+
+.small-heart {
+  font-size: 22px;
+  margin-top: 10px;
+}
+
+.headphones {
+  font-size: 30px;
+  margin-top: 25px;
+}
+
+.little-note {
+  font-size: 13px !important;
+  opacity: 0.6;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+    
   </style>
 </head>
 
@@ -116,39 +161,31 @@
 
     </div>
 
-    <button onclick="openLetter()">
-      💌 点开听声音
-    </button>
-    
-    <div id="voice-letter" style="display: none;">
+    <button id="open-button" onclick="openLetter()">
+  💌 点开听声音
+</button>
 
-  <h2>给小宝 ♡</h2>
+<div id="voice-letter">
 
-  <p>
-    如果你已经看到这里，<br>
-    那应该已经把信看完了吧。
+  <div class="small-heart">♡</div>
+
+  <h2>给小宝</h2>
+
   </p>
-
-  <p>
-    有些话写出来会害羞，<br>
-    所以这一次，<br>
-    换我亲口说给你听。
-  </p>
-
-  <p>🎧</p>
 
 </div>
   
 <script>
 
-  function openLetter() {
+function openLetter() {
 
-    document.querySelector(".message").style.display = "none";
-    document.querySelector("button").style.display = "none";
+  document.querySelector(".message").style.display = "none";
 
-    document.getElementById("voice-letter").style.display = "block";
+  document.getElementById("open-button").style.display = "none";
 
-  }
+  document.getElementById("voice-letter").style.display = "block";
+
+}
 
 </script>
   
