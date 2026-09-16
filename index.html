@@ -96,7 +96,7 @@
 
     <div class="heart">♡</div>
 
-    <h1>你今天过得好吗？睡得好吗？想我了吗？</h1>
+    <h1>宝宝今天过得好吗？睡得好吗？想我了吗？</h1>
 
     <div class="to">
       To：我的小宝
@@ -116,12 +116,25 @@
 
     </div>
 
-    <button>
-      💌
+    <button onclick="openLetter()">
+      💌 点开听声音
     </button>
-
+    
   </div>
+  
+<script>
 
+  function openLetter() {
+
+    document.querySelector(".message").style.display = "none";
+    document.querySelector("button").style.display = "none";
+
+    document.getElementById("voice-letter").style.display = "block";
+
+  }
+
+</script>
+  
 </body>
 
 </html>
