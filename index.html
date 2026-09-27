@@ -248,31 +248,46 @@
     -------------------- */
 
     .audio-title {
-      margin-top: 25px;
+  margin-top: 22px;
+  margin-bottom: 0;
 
-      font-size: 15px;
-
-      opacity: 0.75;
+  font-size: 14px;
+  opacity: 0.65;
     }
-
 
     audio {
-      width: 100%;
+  display: block;
 
-      margin-top: 12px;
+  width: 92%;
+  max-width: 400px;
 
-      accent-color: #e8aaa9;
+  margin: 25px auto 0;
+
+  accent-color: #e8aaa9;
+}
+
+   .love-you {
+  margin-top: 28px;
+  margin-bottom: 16px;
+
+  font-size: 18px;
+  letter-spacing: 2px;
     }
 
+    .back-button {
+  padding: 8px 18px;
+  font-size: 13px;
+  border-radius: 20px;
+  margin-top: 0;
+  background: #e8aaa9;
 
-    .love-you {
-      margin-top: 35px;
+  box-shadow:
+    0 4px 10px rgba(220, 150, 150, 0.18);
+}
 
-      font-size: 19px;
-
-      letter-spacing: 2px;
-    }
-
+.back-button:hover {
+  transform: translateY(-1px);
+}
 
     /* --------------------
        飘动爱心
@@ -500,8 +515,6 @@
 
       </div>
 
-
-
       <div class="love-you">
 
         最爱你了 👩🏻‍❤️‍💋‍👨🏻
@@ -550,13 +563,38 @@
   document.getElementById("first-page")
     .style.display = "block";
 
+
+  /* 停止继续生成爱心 */
+
+  clearInterval(heartTimer);
+  heartTimer = null;
+
+
+  /* 删除现在屏幕上的爱心 */
+
+  document
+    .querySelectorAll(".floating-heart")
+    .forEach(function(heart) {
+      heart.remove();
+    });
+
+
+  /* 暂停录音并回到开头 */
+
+  const audio = document.querySelector("audio");
+
+  audio.pause();
+  audio.currentTime = 0;
+
+
+  /* 回到页面顶部 */
+
   window.scrollTo({
     top: 0,
     behavior: "smooth"
   });
 
 }
-
 
     /* --------------------
        生成爱心
